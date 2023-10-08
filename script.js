@@ -1,9 +1,8 @@
-//////////////////////////////////////////////////////////////
 //TIC TAC TOE
 // Code starts here...
 
 let player = 1;
-let resultArr = [];
+let resultArr = ['', '', '', '', '', '', '', '' ,''];
 let playing = false;
 
 const winningCombination = [
@@ -17,17 +16,27 @@ const winningCombination = [
   [2, 4, 6],
 ];
 
+//Initialise the GAME
+const initializeGame = function(){
+   document.querySelectorAll(".cell").forEach((cell) => (cell.textContent = ""));
+  resultArr = ['', '', '', '', '', '', '', '' ,''];
+  playing = true;
+  player = 1;
+  document.querySelector(".winner--1").classList.add("hidden");
+  document.querySelector(".winner--2").classList.add("hidden");
+}
+
 const tictactoe = function (num) {
   if (playing) {
     const ticTac = player ? "X" : "O";
-    if (resultArr[num] !== 1 || resultArr[num] !== 0) {
+    if (resultArr[num] !== 1 && resultArr[num] !== 0) {
       document.querySelector(`.cell--${num}`).textContent = ticTac;
       document.querySelector(`.cell--${num}`).style.fontSize = "60px";
       document.querySelector(`.cell--${num}`).style.fontWeight = "700";
       document.querySelector(`.cell--${num}`).style.color = "#ffb88c";
 
       resultArr[num] = Number(player);
-      // console.log(resultArr);
+      console.log(resultArr);
 
       //Check for Player 1's win
       if (checkForWin(1)) {
@@ -40,9 +49,12 @@ const tictactoe = function (num) {
         console.log("🎉Player 2 wins");
         document.querySelector(".winner--2").classList.remove("hidden");
         playing = false;
+      } else if(checkForDraw(resultArr)){
+        console.log("🤝DRAW!!!");
+      }else {
+        player = player === 1 ? 0 : 1;
+        //Change the turn
       }
-      player = !player;
-      //Change the turn
     }
   }
 };
@@ -68,24 +80,19 @@ const checkForWin = function (player) {
   return false;
 };
 
-//Reload buttion
-document.querySelector(".reload").addEventListener("click", function () {
-  document.querySelectorAll(".cell").forEach((cell) => (cell.textContent = ""));
-  resultArr = [];
-  playing = true;
-  player = 1;
-  document.querySelector(".winner--1").classList.add("hidden");
-  document.querySelector(".winner--2").classList.add("hidden");
-  // console.log(ticTacToeaArr);
-});
+//Check the the Draw
+const checkForDraw = function (board) {
+  return board.every((cell) => cell !== "");
+};
+
+
+//Reload button
+document.querySelector(".reload").addEventListener("click", initializeGame);
 
 // setting up the start button
 document.querySelector(".start--0").addEventListener("click", function () {
-  document.querySelectorAll(".cell").forEach((cell) => (cell.textContent = ""));
-  resultArr = [];
-  player = 1;
-  playing = true;
-  document.querySelector(".winner--1").classList.add("hidden");
-  document.querySelector(".winner--2").classList.add("hidden");
   console.log("START THE GAME");
+   playing = true;
+  initializeGame();
 });
+  
