@@ -28,7 +28,7 @@ To run the game locally, follow these steps:
 1. Clone this repository.
 2. Open the `index.html` file in your web browser.
 
-   ## Contributing
+## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request with your improvements.
 
