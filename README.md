@@ -32,10 +32,6 @@ To run the game locally, follow these steps:
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request with your improvements.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - [Font Awesome](https://fontawesome.com/) for the icons used in the game.
